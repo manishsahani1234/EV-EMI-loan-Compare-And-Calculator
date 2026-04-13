@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV EMI Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="calc-wrap">
+        <div class="calc-body">
+
+            <!-- INPUTS -->
+            <div class="calc-inputs">
+
+                <div class="field">
+                    <div class="field-box">
+                        <span class="field-top">Loan Amount</span>
+                        <input type="number" id="inp-loan" value="100000" min="10000" max="2000000" step="1000">
+                        <span class="field-bottom" id="lbl-loan">₹ 1,00,000</span>
+                    </div>
+                    <div class="slider-row">
+                        <span class="slider-min">₹10K</span>
+                        <input type="range" id="sl-loan" min="10000" max="2000000" step="1000" value="100000">
+                        <span class="slider-max">₹20L</span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-box">
+                        <span class="field-top">Rate of Interest (p.a.)</span>
+                        <input type="number" id="inp-rate" value="7.5" min="1" max="30" step="0.1">
+                        <span class="field-bottom" id="lbl-rate">7.5%</span>
+                    </div>
+                    <div class="slider-row">
+                        <span class="slider-min">1%</span>
+                        <input type="range" id="sl-rate" min="1" max="30" step="0.1" value="7.5">
+                        <span class="slider-max">30%</span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-box">
+                        <span class="field-top">Loan Tenure</span>
+                        <input type="number" id="inp-tenure" value="24" min="6" max="84" step="1">
+                        <span class="field-bottom" id="lbl-tenure">24 Months</span>
+                    </div>
+                    <div class="slider-row">
+                        <span class="slider-min">6M</span>
+                        <input type="range" id="sl-tenure" min="6" max="84" step="1" value="24">
+                        <span class="slider-max">84M</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RESULTS -->
+            <div class="calc-results">
+                <div class="result-title">⚡ Your EMI Summary</div>
+
+                <div class="result-cards">
+                    <div class="result-card highlight">
+                        <div class="rc-label">Monthly EMI</div>
+                        <div class="rc-value"><span class="sym">₹</span><span id="res-emi">4,513</span></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="rc-label">Principal Amount</div>
+                        <div class="rc-value"><span class="sym">₹</span><span id="res-principal">1,00,000</span></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="rc-label">Total Interest</div>
+                        <div class="rc-value"><span class="sym">₹</span><span id="res-interest">8,314</span></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="rc-label">Total Payable</div>
+                        <div class="rc-value"><span class="sym">₹</span><span id="res-total">1,08,314</span></div>
+                    </div>
+                </div>
+
+                <div class="chart-wrap">
+                    <svg class="donut-svg" width="78" height="78" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="30" fill="none" stroke="#e8f8f0" stroke-width="14"/>
+                        <circle id="donut-interest" cx="40" cy="40" r="30" fill="none"
+                            stroke="#2ecc71" stroke-width="14" stroke-dasharray="188.5" stroke-dashoffset="0"
+                            stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                        <circle id="donut-principal" cx="40" cy="40" r="30" fill="none"
+                            stroke="#1a8a4a" stroke-width="14" stroke-dasharray="188.5" stroke-dashoffset="0"
+                            stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                        <text x="40" y="44" text-anchor="middle" font-family="Poppins" font-size="8.5" font-weight="700" fill="#1a2e1f">Split</text>
+                    </svg>
+                    <div style="flex:1">
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background:#1a8a4a"></span> Principal
+                            <span class="legend-pct" id="pct-principal">92.3%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background:#2ecc71"></span> Interest
+                            <span class="legend-pct" id="pct-interest">7.7%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
